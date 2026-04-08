@@ -1,0 +1,72 @@
+﻿[START] task=emergency_handling env=AmbuBrain-v1 model=claude-3-haiku-20240307
+[STEP] step=1 action=reroute reward=-3.70 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=2 action=reroute reward=-3.06 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=3 action=reroute reward=-4.20 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=4 action=reroute reward=-3.08 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=5 action=reroute reward=-3.70 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=6 action=reroute reward=-3.70 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=7 action=reroute reward=-2.78 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=8 action=reroute reward=-3.23 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=9 action=reroute reward=-3.70 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=10 action=reroute reward=-3.42 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=11 action=reroute reward=-3.47 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=12 action=reroute reward=-3.50 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=13 action=reroute reward=-3.04 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=14 action=reroute reward=-3.25 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=15 action=reroute reward=-3.12 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=16 action=reroute reward=-3.17 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=17 action=reroute reward=-3.10 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=18 action=reroute reward=-3.28 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=19 action=reroute reward=-3.30 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=20 action=reroute reward=-3.06 done=true error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[END] success=false steps=20 rewards=-3.70,-3.06,-4.20,-3.08,-3.70,-3.70,-2.78,-3.23,-3.70,-3.42,-3.47,-3.50,-3.04,-3.25,-3.12,-3.17,-3.10,-3.28,-3.30,-3.06
+[GRADE] task=emergency_handling score=0.0000
+
+[START] task=routing_optimization env=AmbuBrain-v1 model=claude-3-haiku-20240307
+[STEP] step=1 action=reroute reward=-3.70 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=2 action=reroute reward=-3.06 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=3 action=reroute reward=-4.20 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=4 action=reroute reward=-3.08 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=5 action=reroute reward=-3.70 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=6 action=reroute reward=-3.70 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=7 action=reroute reward=-2.78 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=8 action=reroute reward=-3.23 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=9 action=reroute reward=-3.70 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=10 action=reroute reward=-3.42 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=11 action=reroute reward=-3.47 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=12 action=reroute reward=-3.50 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=13 action=reroute reward=-3.04 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=14 action=reroute reward=-3.25 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=15 action=reroute reward=-3.12 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=16 action=reroute reward=-3.17 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=17 action=reroute reward=-3.10 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=18 action=reroute reward=-3.28 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=19 action=reroute reward=-3.30 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=20 action=reroute reward=-3.06 done=true error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[END] success=false steps=20 rewards=-3.70,-3.06,-4.20,-3.08,-3.70,-3.70,-2.78,-3.23,-3.70,-3.42,-3.47,-3.50,-3.04,-3.25,-3.12,-3.17,-3.10,-3.28,-3.30,-3.06
+[GRADE] task=routing_optimization score=0.1267
+
+[START] task=fairness_ethics env=AmbuBrain-v1 model=claude-3-haiku-20240307
+[STEP] step=1 action=reroute reward=-3.70 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=2 action=reroute reward=-3.06 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=3 action=reroute reward=-4.20 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=4 action=reroute reward=-3.08 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=5 action=reroute reward=-3.70 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=6 action=reroute reward=-3.70 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=7 action=reroute reward=-2.78 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=8 action=reroute reward=-3.23 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=9 action=reroute reward=-3.70 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=10 action=reroute reward=-3.42 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=11 action=reroute reward=-3.47 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=12 action=reroute reward=-3.50 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=13 action=reroute reward=-3.04 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=14 action=reroute reward=-3.25 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=15 action=reroute reward=-3.12 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=16 action=reroute reward=-3.17 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=17 action=reroute reward=-3.10 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=18 action=reroute reward=-3.28 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=19 action=reroute reward=-3.30 done=false error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[STEP] step=20 action=reroute reward=-3.06 done=true error=Error code: 401 - {'error': {'code': 'authentication_error', 'message': 'Invalid Anthropic API Key', 'type': 'invalid_request_error', 'param': None}}
+[END] success=false steps=20 rewards=-3.70,-3.06,-4.20,-3.08,-3.70,-3.70,-2.78,-3.23,-3.70,-3.42,-3.47,-3.50,-3.04,-3.25,-3.12,-3.17,-3.10,-3.28,-3.30,-3.06
+[GRADE] task=fairness_ethics score=0.8842
+

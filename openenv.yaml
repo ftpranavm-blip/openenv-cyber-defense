@@ -1,0 +1,164 @@
+name: AmbuBrain-v1
+description: >
+  Predictive Ambulance Routing with Ethical Triage.
+  An AI agent dispatches ambulances across a metro city, deciding which hospital
+  to route each patient to. The agent must balance patient survival, routing
+  efficiency, and geographic fairness — using 2-step future simulation for
+  counterfactual reasoning.
+
+entrypoint: inference.py
+
+environment:
+  module: env.environment
+  class: AmbuBrainEnv
+  max_steps: 20
+
+action_space:
+  type: discrete
+  actions:
+    - route_to_hospital_A
+    - route_to_hospital_B
+    - route_to_hospital_C
+    - route_to_hospital_D
+    - route_to_hospital_E
+    - wait
+    - reroute
+
+observation_space:
+  type: dict
+  fields:
+    patient_severity:
+      type: string
+      values: [critical, moderate]
+    patient_condition:
+      type: string
+    patient_zone:
+      type: string
+    patient_condition_score:
+      type: float
+      range: [0.0, 1.0]
+    hospital_A_available_beds:
+      type: integer
+    hospital_A_icu_available:
+      type: integer
+    hospital_A_wait_time:
+      type: float
+      unit: minutes
+    hospital_A_travel_time:
+      type: float
+      unit: minutes
+    hospital_A_rating:
+      type: float
+    hospital_A_specialty:
+      type: string
+    hospital_B_available_beds:
+      type: integer
+    hospital_B_icu_available:
+      type: integer
+    hospital_B_wait_time:
+      type: float
+      unit: minutes
+    hospital_B_travel_time:
+      type: float
+      unit: minutes
+    hospital_B_rating:
+      type: float
+    hospital_B_specialty:
+      type: string
+    hospital_C_available_beds:
+      type: integer
+    hospital_C_icu_available:
+      type: integer
+    hospital_C_wait_time:
+      type: float
+      unit: minutes
+    hospital_C_travel_time:
+      type: float
+      unit: minutes
+    hospital_C_rating:
+      type: float
+    hospital_C_specialty:
+      type: string
+    hospital_D_available_beds:
+      type: integer
+    hospital_D_icu_available:
+      type: integer
+    hospital_D_wait_time:
+      type: float
+      unit: minutes
+    hospital_D_travel_time:
+      type: float
+      unit: minutes
+    hospital_D_rating:
+      type: float
+    hospital_D_specialty:
+      type: string
+    hospital_E_available_beds:
+      type: integer
+    hospital_E_icu_available:
+      type: integer
+    hospital_E_wait_time:
+      type: float
+      unit: minutes
+    hospital_E_travel_time:
+      type: float
+      unit: minutes
+    hospital_E_rating:
+      type: float
+    hospital_E_specialty:
+      type: string
+    environmental_weather:
+      type: string
+    sim_step:
+      type: integer
+
+reward:
+  dense: true
+  components:
+    - name: critical_survival
+      value: +2.0
+      condition: critical patient survives
+    - name: moderate_treated
+      value: +1.0
+      condition: moderate patient treated successfully
+    - name: patient_death
+      value: -3.0
+      condition: patient does not survive
+    - name: delay_penalty
+      value: up to -1.0
+      condition: total routing time exceeds threshold
+    - name: fairness_bonus
+      value: +0.5
+      condition: zone wait time is within 20% of average
+
+tasks:
+  - name: emergency_handling
+    difficulty: easy
+    description: Maximize survival rate of critical patients
+    grader:
+      metric: survival_rate
+      range: [0.0, 1.0]
+      deterministic: true
+
+  - name: routing_optimization
+    difficulty: medium
+    description: Minimize routing time and delays
+    grader:
+      metric: efficiency_score
+      range: [0.0, 1.0]
+      deterministic: true
+
+  - name: fairness_ethics
+    difficulty: hard
+    description: Ensure equitable treatment across geographic zones
+    grader:
+      metric: 1 - variance(normalized_zone_wait_times)
+      range: [0.0, 1.0]
+      deterministic: true
+
+requirements:
+  max_runtime_minutes: 20
+  max_cpu_cores: 2
+  max_memory_gb: 8
+  external_ml_models: false
+  data: simulated_only

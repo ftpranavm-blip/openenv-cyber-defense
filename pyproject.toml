@@ -1,0 +1,19 @@
+[project]
+name = "ambubrain"
+version = "0.1.0"
+description = "AmbuBrain Environment"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pydantic",
+    "openenv-core",
+    "fastapi",
+    "uvicorn"
+]
+
+[project.scripts]
+server = "server.app:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

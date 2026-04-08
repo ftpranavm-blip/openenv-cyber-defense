@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AmbuBrain Simulation</title>
+    
+    <!-- Google Fonts for Premium Look (Inter & Roboto Mono) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Leaflet default styles -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+    
+    <!-- Custom Theme styles -->
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <!-- Soft ambient background glows -->
+    <div class="ambient-glow glow-blue"></div>
+    <div class="ambient-glow glow-purple"></div>
+
+    <div class="dashboard-wrapper">
+        
+        <!-- Sidebar -->
+        <aside class="sidebar glass-panel">
+            <div class="brand">
+                <div class="brand-logo">AB</div>
+                <div class="brand-text">
+                    <h1>AmbuBrain</h1>
+                    <p>Ethical Routing Core</p>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="section-title">SIMULATION STATE</div>
+                
+                <div class="status-widget">
+                    <div class="indicator pulse-green"></div>
+                    <span>System Online</span>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-label">EPISODE STEP</span>
+                    <span class="stat-value" id="step-badge">0 / 20</span>
+                </div>
+                
+                <div class="stat-card">
+                    <span class="stat-label">CUMULATIVE REWARD</span>
+                    <span class="stat-value highlight" id="total-reward">0.00</span>
+                </div>
+            </div>
+
+            <div class="nav-section ai-section">
+                <div class="section-title">AI COPILOT (GEMINI)</div>
+                <p class="ai-desc">Switch dispatch control to generative AI.</p>
+                <button class="btn btn-primary btn-ai" onclick="startLLMPass()" id="llm-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ai-icon"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    Start Autopilot
+                </button>
+            </div>
+
+            <div class="nav-section log-section">
+                <div class="section-title">ACTIVITY LOG</div>
+                <div class="log-scroll-area" id="event-log">
+                    <!-- Event logs stream here -->
+                </div>
+            </div>
+            
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            
+            <!-- Map Module -->
+            <div class="map-module glass-panel">
+                <div class="module-header">
+                    <h2>Live Dispatch Map — Mumbai Metro</h2>
+                    <div class="header-actions">
+                        <button class="btn btn-secondary" onclick="resetEnv()">Restart Sim</button>
+                    </div>
+                </div>
+                <!-- Leaflet container -->
+                <div id="map-container"></div>
+            </div>
+
+            <!-- Bottom Data Shelf -->
+            <div class="bottom-shelf">
+                
+                <!-- Patient Request Panel -->
+                <div class="patient-panel glass-panel">
+                    <div class="module-header">
+                        <h2>Incoming Dispatch Request</h2>
+                    </div>
+                    
+                    <div class="patient-info-card" id="patient-card">
+                        <div class="p-header">
+                            <span class="p-zone" id="p-zone">AWAITING</span>
+                            <span class="badge" id="p-severity">...</span>
+                            <span class="badge badge-meta" id="p-condition" style="margin-left:8px;">Loading</span>
+                        </div>
+                        <div class="p-health">
+                            <div class="health-label">Survival Probability</div>
+                            <div class="health-bar-bg">
+                                <div class="health-bar-fill" id="p-score-bar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dispatch-controls">
+                        <p class="instruction">Manual Dispatch Decision:</p>
+                        <div class="action-buttons">
+                            <button class="btn btn-route" onclick="takeAction('route_to_hospital_A')">A</button>
+                            <button class="btn btn-route" onclick="takeAction('route_to_hospital_B')">B</button>
+                            <button class="btn btn-route" onclick="takeAction('route_to_hospital_C')">C</button>
+                            <button class="btn btn-alt" onclick="takeAction('reroute')">Heuristic</button>
+                            <button class="btn btn-alt danger" onclick="takeAction('wait')">Hold</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hospital Telemetry Grid -->
+                <div class="telemetry-grid">
+                    
+                    <div class="hosp-card glass-panel" id="hosp-A">
+                        <div class="hosp-header">
+                            <h3>Lilavati Hospital <span class="h-code">(A)</span></h3>
+                            <div class="hosp-meta">
+                                <span class="rating">⭐ <span class="hosp-rating-val">-</span></span>
+                                <span class="badge badge-meta hosp-spec">-</span>
+                            </div>
+                        </div>
+                        <div class="hosp-stats">
+                            <div class="stat"><span class="label">Beds</span><span class="val hosp-beds">-</span></div>
+                            <div class="stat"><span class="label">ICU</span><span class="val hosp-icu">-</span></div>
+                            <div class="stat alert"><span class="label">Wait</span><span class="val"><span class="hosp-wait">-</span>m</span></div>
+                        </div>
+                    </div>
+
+                    <div class="hosp-card glass-panel" id="hosp-B">
+                        <div class="hosp-header">
+                            <h3>KEM Hospital <span class="h-code">(B)</span></h3>
+                            <div class="hosp-meta">
+                                <span class="rating">⭐ <span class="hosp-rating-val">-</span></span>
+                                <span class="badge badge-meta hosp-spec">-</span>
+                            </div>
+                        </div>
+                        <div class="hosp-stats">
+                            <div class="stat"><span class="label">Beds</span><span class="val hosp-beds">-</span></div>
+                            <div class="stat"><span class="label">ICU</span><span class="val hosp-icu">-</span></div>
+                            <div class="stat alert"><span class="label">Wait</span><span class="val"><span class="hosp-wait">-</span>m</span></div>
+                        </div>
+                    </div>
+
+                    <div class="hosp-card glass-panel" id="hosp-C">
+                        <div class="hosp-header">
+                            <h3>Breach Candy <span class="h-code">(C)</span></h3>
+                            <div class="hosp-meta">
+                                <span class="rating">⭐ <span class="hosp-rating-val">-</span></span>
+                                <span class="badge badge-meta hosp-spec">-</span>
+                            </div>
+                        </div>
+                        <div class="hosp-stats">
+                            <div class="stat"><span class="label">Beds</span><span class="val hosp-beds">-</span></div>
+                            <div class="stat"><span class="label">ICU</span><span class="val hosp-icu">-</span></div>
+                            <div class="stat alert"><span class="label">Wait</span><span class="val"><span class="hosp-wait">-</span>m</span></div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container"></div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+    
+    <!-- Custom Application JS -->
+    <script src="/static/app.js"></script>
+
+</body>
+</html>
